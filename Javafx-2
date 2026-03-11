@@ -1,0 +1,46 @@
+package com.mycompany.javafxexample;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class LoginForm extends Application {
+
+   @Override
+   public void start(Stage stage) {
+
+       Label title = new Label("Login Form");
+
+       TextField username = new TextField();
+       username.setPromptText("Enter Username");
+
+       PasswordField password = new PasswordField();
+       password.setPromptText("Enter Password");
+
+       Button login = new Button("Login");
+
+       Label message = new Label();
+
+       login.setOnAction(e -> {
+           if(username.getText().equals("admin") && password.getText().equals("1234")){
+               message.setText("Login Successful");
+           } else {
+               message.setText("Invalid Login");
+           }
+       });
+
+       VBox root = new VBox(10, title, username, password, login, message);
+
+       Scene scene = new Scene(root, 300, 200);
+
+       stage.setTitle("Login Example");
+       stage.setScene(scene);
+       stage.show();
+   }
+
+   public static void main(String[] args) {
+       launch();
+   }
+}
