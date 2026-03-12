@@ -1,0 +1,43 @@
+package com.mycompany.javafxexample;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class CalculatorFX extends Application {
+
+   @Override
+   public void start(Stage stage) {
+
+       TextField num1 = new TextField();
+       num1.setPromptText("Enter Number 1");
+
+       TextField num2 = new TextField();
+       num2.setPromptText("Enter Number 2");
+
+       Button add = new Button("Add");
+
+       Label result = new Label("Result:");
+
+       add.setOnAction(e -> {
+           int a = Integer.parseInt(num1.getText());
+           int b = Integer.parseInt(num2.getText());
+
+           result.setText("Result: " + (a+b));
+       });
+
+       VBox root = new VBox(10, num1, num2, add, result);
+
+       Scene scene = new Scene(root, 300, 200);
+
+       stage.setTitle("Calculator");
+       stage.setScene(scene);
+       stage.show();
+   }
+
+   public static void main(String[] args) {
+       launch();
+   }
+}
